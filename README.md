@@ -1,96 +1,103 @@
-# 🖼️ Stealth Wallpaper Changer
+<img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
-A fun, harmless wallpaper changer that can run silently for pranks or personal use. Changes desktop wallpaper automatically on startup or manually with zero popups.
 
-## 🚀 Quick Start
+# [Project Name] 🎯
 
-### **For Instant Wallpaper Change:**
-1. Put your wallpaper image in the `wallpapers` folder
-2. Double-click `CLICK_ME_TO_CHANGE_WALLPAPER.bat`
-3. Choose option 2 for silent mode (no popups)
 
-### **For Stealth Pranks (Friends' Computers):**
-1. Copy this entire folder to their computer
-2. Add your prank wallpaper to the `wallpapers` folder  
-3. Double-click `CLICK_TO_INSTALL_STEALTH.vbs` (completely invisible)
-4. Walk away - wallpaper will change on their next restart!
+## Basic Details
+### Team Name: Madhumith Prasanth
 
-## 📁 Files Included
 
-| File | Purpose |
-|------|---------|
-| `CLICK_ME_TO_CHANGE_WALLPAPER.bat` | Main interface - change wallpaper now |
-| `CHANGE_WALLPAPER_SILENT.vbs` | Instant silent wallpaper change |
-| `CLICK_TO_INSTALL_STEALTH.vbs` | Install automatic startup (invisible) |
-| `STEALTH_REMOVE.bat` | Remove from startup completely |
-| `instant_wallpaper.py` | Core wallpaper changing script |
-| `hidden_launcher.py` | Silent execution wrapper |
-| `wallpapers/` | Put your wallpaper images here |
+### Team Members
+- Team Lead: Madhumith Prasanth - CUCEK
 
-## 🎯 Usage Options
+### Project Description
+A completely invisible wallpaper changer designed for harmless pranks and silent demonstrations that operates with zero popup windows or detection. The system uses VBScript wrappers and Windows APIs to instantly change desktop wallpapers, install hidden startup scripts for persistent pranking, and ensure registry persistence across system reboots.
 
-### **Option 1: Manual Change**
-```
-Double-click: CLICK_ME_TO_CHANGE_WALLPAPER.bat
-```
-- Shows menu with normal/silent options
-- Choose 2 for silent mode (no popups)
+### The Problem (that doesn't exist)
+People are getting way too comfortable with their boring desktop wallpapers and need immediate intervention. Friends' computers are suffering from chronic wallpaper monotony, and there's absolutely no way to secretly change them without triggering annoying popup windows that ruin the surprise!
 
-### **Option 2: Direct Silent Change**
-```
-Double-click: CHANGE_WALLPAPER_SILENT.vbs
-```
-- Changes wallpaper immediately
-- Zero popup windows
-- Perfect for stealth use
+### The Solution (that nobody asked for)
+An ultra-sophisticated stealth wallpaper warfare system featuring VBScript ninjas, Python commandos, and Windows API wizardry! Deploy invisible wallpaper bombs with zero detection, install persistent prank modules that survive reboots, and watch victims question their sanity as their wallpapers mysteriously change. Because clearly, the world desperately needed a way to silently terrorize desktops with complete invisibility and maximum confusion!
 
-### **Option 3: Install Automatic Startup**
-```
-Double-click: CLICK_TO_INSTALL_STEALTH.vbs
-```
-- Installs completely invisibly
-- Wallpaper changes on every restart
-- No popups during installation or execution
+## Technical Details
+### Technologies/Components Used
+For Software:
+- **Python 3.x** - Core wallpaper manipulation engine
+- **VBScript** - Silent execution wrappers for zero popup stealth
+- **Windows Batch** - User-friendly interfaces and installation routines
+- **Windows Registry API** - Persistent wallpaper settings across reboots
+- **Windows SystemParametersInfo API** - Direct desktop wallpaper control
+- **ctypes library** - Python-to-Windows API bridge
+- **winreg module** - Registry manipulation for persistence
+- **subprocess module** - Silent process execution with CREATE_NO_WINDOW
 
-## 🕵️ Stealth Features
+For Hardware:
+- **Windows 10/11 Compatible PC** - Target system for stealth operations
+- **Storage Device** - USB drive or network share for deployment
+- **Keyboard & Mouse** - For the epic double-click stealth activation
+- **Monitor** - To witness the magical wallpaper transformation
 
-- ✅ **Zero Popups** - All operations can run silently
-- ✅ **Hidden Installation** - Friend never sees any windows
-- ✅ **Automatic Startup** - Changes wallpaper on restart
-- ✅ **Clean Removal** - Easy cleanup with stealth remove
-- ✅ **No Console Windows** - Uses VBS wrappers for invisibility
+### Implementation
+For Software:
+# Installation
+```bash
+# Clone the stealth wallpaper warfare repository
+git clone https://github.com/Madhuu06/useless2.0.git
 
-## 🛠️ How It Works
+# Navigate to the wallpaper script directory
+cd "useless2.0/Wallpaper Script"
 
-1. **VBS Scripts** run batch files with window mode = 0 (invisible)
-2. **Hidden Launcher** uses Python subprocess with no console window
-3. **Fill Mode** ensures wallpaper scales properly without stretching
-4. **2-Second Delay** gives Windows time to load before changing wallpaper
+# Add your prank wallpapers to the wallpapers folder
+# Supported formats: .jpg, .jpeg, .png, .bmp, .gif
 
-## 🗑️ Removal
-
-To remove from startup completely:
-```
-Double-click: STEALTH_REMOVE.bat
+# No additional dependencies required - uses built-in Windows APIs!
 ```
 
-## ⚠️ Requirements
+# Run
+```bash
+# 🥷 STEALTH MODE - Instant invisible wallpaper change
+double-click CHANGE_WALLPAPER_SILENT.vbs
 
-- Windows 10/11
-- Python 3.x installed (with "Add to PATH" checked)
-- At least one image file in the `wallpapers` folder
+# 🎮 MANUAL MODE - Choose your options
+double-click CLICK_ME_TO_CHANGE_WALLPAPER.bat
 
-## 🎮 Perfect For
+# 😈 PERSISTENT PRANK MODE - Install auto-startup
+double-click CLICK_TO_INSTALL_STEALTH.vbs
 
-- **Harmless pranks** on friends' computers
-- **Personal use** for automatic wallpaper changes
-- **Stealth operations** requiring zero visual evidence
-- **Clean setups** with minimal files and popups
+# 🧹 CLEANUP MODE - Remove all traces
+double-click STEALTH_REMOVE.bat
+```
 
-## 📷 Supported Formats
+### Project Documentation
+For Software:
 
-- `.jpg`, `.jpeg`, `.png`, `.bmp`, `.gif`
+# Screenshots (Add at least 3)
+![Stealth File Structure](screenshots/Screenshot%202025-08-09%20154049.png)
+*Project file structure showing all stealth components and execution files*
 
----
+![Silent Execution Demo](screenshots/Screenshot%202025-08-09%20160326.png)
+*Demonstration of completely silent wallpaper change with zero popups*
 
-**Enjoy your stealth wallpaper adventures!** 🎯✨
+### Project Demo
+### Project Demo
+# Video
+[🎥 **Watch Stealth Wallpaper Changer Demo**](screenshots/WhatsApp%20Video%202025-08-09%20at%2016.22.19_0fe5db9e.mp4)
+
+*Click the link above to download and watch the silent stealth wallpaper changer in action*
+
+**Demo Explanation:** 
+Upon running the script, the desktop wallpaper changes instantly to the wallpaper from the script. We demonstrate changing the wallpaper manually before restarting to verify the script's persistence across reboots. After boot-up, it takes roughly 15 seconds to load as the system services and startups initialize. The stealth script remains active until the user runs "STEALTH_REMOVE.bat" to completely uninstall it.
+
+# Additional Demos
+- **Zero Popup Demonstration**: Complete silence during execution
+- **Registry Persistence**: Wallpaper survives system reboots  
+- **Stealth Installation**: Hidden startup files with disguised names
+
+Made with ❤️ at TinkerHub Useless Projects 
+
+![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
+![Static Badge](https://img.shields.io/badge/UselessProjects--25-25?link=https%3A%2F%2Fwww.tinkerhub.org%2Fevents%2FQ2Q1TQKX6Q%2FUseless%2520Projects)
+
+
+

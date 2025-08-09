@@ -56,46 +56,45 @@ def get_wallpaper_files():
     return wallpaper_files
 
 def set_wallpaper(image_path):
-    """Set desktop wallpaper using Windows API with Fill mode"""
+    """Set desktop wallpaper using Windows API with Fill mode - PERSISTENT ACROSS REBOOTS"""
     try:
         abs_path = str(Path(image_path).resolve())
         
-        # Use Windows API to set wallpaper
+        # FIRST: Update registry to ensure persistence across reboots
+        try:
+            import winreg
+            key_path = r"Control Panel\Desktop"
+            
+            # Open registry key
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path, 0, winreg.KEY_SET_VALUE) as key:
+                # Set the wallpaper path in registry - THIS IS CRUCIAL FOR PERSISTENCE
+                winreg.SetValueEx(key, "Wallpaper", 0, winreg.REG_SZ, abs_path)
+                # Set WallpaperStyle to "10" (Fill mode)
+                winreg.SetValueEx(key, "WallpaperStyle", 0, winreg.REG_SZ, "10")
+                # Set TileWallpaper to "0" (don't tile)
+                winreg.SetValueEx(key, "TileWallpaper", 0, winreg.REG_SZ, "0")
+            
+        except Exception as registry_error:
+            print(f"⚠ Registry update failed: {registry_error}")
+            return False
+        
+        # SECOND: Use Windows API to set wallpaper immediately
         SPI_SETDESKWALLPAPER = 20
         result = ctypes.windll.user32.SystemParametersInfoW(
             SPI_SETDESKWALLPAPER, 
             0, 
             abs_path, 
-            3  # SPIF_UPDATEINIFILE | SPIF_SENDCHANGE
+            3  # SPIF_UPDATEINIFILE | SPIF_SENDCHANGE - Forces registry update
         )
         
         if result:
-            # Set wallpaper style to "Fill" for best fit
-            # This ensures the image fills the screen properly without stretching
-            try:
-                import winreg
-                key_path = r"Control Panel\Desktop"
-                
-                # Open registry key
-                with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path, 0, winreg.KEY_SET_VALUE) as key:
-                    # Set WallpaperStyle to "10" (Fill mode)
-                    # Fill mode scales the image to fill the desktop while maintaining aspect ratio
-                    winreg.SetValueEx(key, "WallpaperStyle", 0, winreg.REG_SZ, "10")
-                    # Set TileWallpaper to "0" (don't tile)
-                    winreg.SetValueEx(key, "TileWallpaper", 0, winreg.REG_SZ, "0")
-                
-                # Refresh desktop to apply the style changes
-                SPI_SETDESKWALLPAPER = 20
-                ctypes.windll.user32.SystemParametersInfoW(
-                    SPI_SETDESKWALLPAPER, 
-                    0, 
-                    abs_path, 
-                    3
-                )
-                
-            except Exception as style_error:
-                # If registry update fails, wallpaper still gets set, just maybe not optimal fit
-                pass
+            # THIRD: Double-check with another API call to ensure it sticks
+            ctypes.windll.user32.SystemParametersInfoW(
+                SPI_SETDESKWALLPAPER, 
+                0, 
+                abs_path, 
+                3
+            )
             
             print(f"✓ Successfully changed wallpaper to: {image_path.name}")
             return True
@@ -114,7 +113,7 @@ def main():
     
     if not startup_mode:
         print("=" * 50)
-        print("  🎨 INSTANT WALLPAPER CHANGER")
+        print("  INSTANT WALLPAPER CHANGER")
         print("=" * 50)
         print()
     
@@ -129,7 +128,7 @@ def main():
             # Silent fail for startup mode
             return
             
-        print("⚠️  No wallpaper images found!")
+        print(" No wallpaper images found!")
         print()
         print("QUICK SETUP:")
         print("1. Add your wallpaper image to the 'wallpapers' folder")
