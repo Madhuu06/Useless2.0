@@ -1,0 +1,192 @@
+#!/usr/bin/env python3
+"""
+INSTANT Random Wallpaper Changer - No setup required!
+Just add images to wallpapers folder and run this script!
+"""
+
+import os
+import random
+import sys
+import ctypes
+import winreg
+from pathlib import Path
+import json
+import logging
+from datetime import datetime
+
+# Setup
+script_dir = Path(__file__).parent
+wallpapers_folder = script_dir / "wallpapers"
+supported_formats = ('.jpg', '.jpeg', '.png', '.bmp', '.gif')
+
+def create_wallpapers_folder():
+    """Create wallpapers folder if it doesn't exist"""
+    if not wallpapers_folder.exists():
+        wallpapers_folder.mkdir(parents=True, exist_ok=True)
+        print(f"✓ Created wallpapers folder: {wallpapers_folder}")
+        
+        # Create quick guide
+        guide_content = """ADD YOUR IMAGES HERE!
+
+Supported formats: .jpg, .jpeg, .png, .bmp, .gif
+
+Where to find great wallpapers:
+- Unsplash.com (nature photos)
+- Reddit r/wallpapers (variety)
+- Your phone's camera roll
+- Meme websites for fun images
+
+Just drag and drop images into this folder!
+"""
+        guide_file = wallpapers_folder / "PUT_IMAGES_HERE.txt"
+        with open(guide_file, 'w', encoding='utf-8') as f:
+            f.write(guide_content)
+        return True
+    return False
+
+def get_wallpaper_files():
+    """Get list of valid wallpaper files"""
+    if not wallpapers_folder.exists():
+        return []
+    
+    wallpaper_files = []
+    for file_path in wallpapers_folder.iterdir():
+        if file_path.is_file() and file_path.suffix.lower() in supported_formats:
+            wallpaper_files.append(file_path)
+    
+    return wallpaper_files
+
+def set_wallpaper(image_path):
+    """Set desktop wallpaper using Windows API with Fill mode"""
+    try:
+        abs_path = str(Path(image_path).resolve())
+        
+        # Use Windows API to set wallpaper
+        SPI_SETDESKWALLPAPER = 20
+        result = ctypes.windll.user32.SystemParametersInfoW(
+            SPI_SETDESKWALLPAPER, 
+            0, 
+            abs_path, 
+            3  # SPIF_UPDATEINIFILE | SPIF_SENDCHANGE
+        )
+        
+        if result:
+            # Set wallpaper style to "Fill" for best fit
+            # This ensures the image fills the screen properly without stretching
+            try:
+                import winreg
+                key_path = r"Control Panel\Desktop"
+                
+                # Open registry key
+                with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path, 0, winreg.KEY_SET_VALUE) as key:
+                    # Set WallpaperStyle to "10" (Fill mode)
+                    # Fill mode scales the image to fill the desktop while maintaining aspect ratio
+                    winreg.SetValueEx(key, "WallpaperStyle", 0, winreg.REG_SZ, "10")
+                    # Set TileWallpaper to "0" (don't tile)
+                    winreg.SetValueEx(key, "TileWallpaper", 0, winreg.REG_SZ, "0")
+                
+                # Refresh desktop to apply the style changes
+                SPI_SETDESKWALLPAPER = 20
+                ctypes.windll.user32.SystemParametersInfoW(
+                    SPI_SETDESKWALLPAPER, 
+                    0, 
+                    abs_path, 
+                    3
+                )
+                
+            except Exception as style_error:
+                # If registry update fails, wallpaper still gets set, just maybe not optimal fit
+                pass
+            
+            print(f"✓ Successfully changed wallpaper to: {image_path.name}")
+            return True
+        else:
+            print(f"✗ Failed to set wallpaper: {image_path}")
+            return False
+            
+    except Exception as e:
+        print(f"✗ Error setting wallpaper: {e}")
+        return False
+
+def main():
+    """Main function - instant wallpaper changer"""
+    # Check if running from startup (no user interaction)
+    startup_mode = len(sys.argv) > 1 and sys.argv[1] == "startup"
+    
+    if not startup_mode:
+        print("=" * 50)
+        print("  🎨 INSTANT RANDOM WALLPAPER CHANGER")
+        print("=" * 50)
+        print()
+    
+    # Create wallpapers folder if needed
+    folder_created = create_wallpapers_folder()
+    
+    # Get available wallpapers
+    wallpaper_files = get_wallpaper_files()
+    
+    if not wallpaper_files:
+        if startup_mode:
+            # Silent fail for startup mode
+            return
+            
+        print("⚠️  No wallpaper images found!")
+        print()
+        print("QUICK SETUP:")
+        print("1. Add some images to the 'wallpapers' folder")
+        print("2. Run this script again")
+        print()
+        print("Supported formats: .jpg, .jpeg, .png, .bmp, .gif")
+        print()
+        
+        if folder_created:
+            print("📁 Opening wallpapers folder for you...")
+            try:
+                if os.name == 'nt':  # Windows
+                    os.startfile(wallpapers_folder)
+                elif os.name == 'posix':  # Mac/Linux
+                    os.system(f'open "{wallpapers_folder}"')
+            except:
+                print(f"📁 Wallpapers folder location: {wallpapers_folder}")
+        
+        input("\nPress Enter to close...")
+        return
+    
+    # Choose random wallpaper
+    chosen_wallpaper = random.choice(wallpaper_files)
+    
+    if not startup_mode:
+        print(f"🎲 Randomly selected: {chosen_wallpaper.name}")
+    
+    # Set the wallpaper
+    success = set_wallpaper(chosen_wallpaper)
+    
+    if not startup_mode:
+        if success:
+            print()
+            print("🎉 Wallpaper changed successfully!")
+            print(f"📁 From collection of {len(wallpaper_files)} images")
+            print()
+            print("💡 Want automatic changes on startup?")
+            print("   Run: python setup.py enable")
+        else:
+            print()
+            print("❌ Failed to change wallpaper")
+            print("   Try with a different image format")
+        
+        print()
+        input("Press Enter to close...")
+    else:
+        # Startup mode - log to file instead
+        log_file = script_dir / "startup_wallpaper.log"
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        status = "SUCCESS" if success else "FAILED"
+        
+        try:
+            with open(log_file, "a", encoding='utf-8') as f:
+                f.write(f"{timestamp} - {status}: {chosen_wallpaper.name if success else 'Wallpaper change failed'}\n")
+        except:
+            pass  # Silent fail for logging
+
+if __name__ == "__main__":
+    main()
