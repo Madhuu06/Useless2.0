@@ -1,0 +1,10 @@
+echo 09-08-2025 12:37:27.43 - Startup attempt 
+echo Current directory: C:\Users\madhu\OneDrive\Desktop\Karthik\Project\Wallpaper Script 
+python --version 
+    echo Script found, running... 
+    python instant_wallpaper.py startup 
+    echo Wallpaper change completed 
+    echo ERROR: Script not found in: C:\Users\madhu\OneDrive\Desktop\Karthik\Project\Wallpaper Script 
+    echo Directory contents: 
+    dir 
+echo ========================================== 
