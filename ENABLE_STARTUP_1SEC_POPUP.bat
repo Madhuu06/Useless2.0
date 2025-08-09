@@ -18,7 +18,7 @@ REM Write the startup batch file with 1-second popup
 echo @echo off
 echo title Wallpaper Changed!
 echo REM Wait for Windows to fully load
-echo timeout /t 5 /nobreak ^>nul
+echo timeout /t 2 /nobreak ^>nul
 echo.
 echo REM Change to the wallpaper script directory
 echo cd /d "%SCRIPT_DIR%"

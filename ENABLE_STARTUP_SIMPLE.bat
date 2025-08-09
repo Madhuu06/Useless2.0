@@ -24,7 +24,7 @@ set "HIDDEN_BAT=%SCRIPT_DIR%WallpaperChanger_Hidden.bat"
 (
 echo @echo off
 echo REM Hidden wallpaper changer - no popup window
-echo timeout /t 5 /nobreak ^>nul
+echo timeout /t 2 /nobreak ^>nul
 echo cd /d "%SCRIPT_DIR%"
 echo if exist "instant_wallpaper.py" ^(
 echo     python instant_wallpaper.py startup ^>nul 2^>^&1
