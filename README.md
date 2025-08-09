@@ -81,9 +81,7 @@ For Software:
 
 ### Project Demo
 # Video
-
-
-[![Download Demo Video](https://github.com/user-attachments/assets/1d043dbe-d903-47d5-b045-f13232184172)
+[🎥 **Watch Demo Video**](https://github.com/user-attachments/assets/your-video-id.mp4)
 
 **Demo Explanation:** 
 Upon running the script, the desktop wallpaper changes instantly to the wallpaper from the script. We demonstrate changing the wallpaper manually before restarting to verify the script's persistence across reboots. After boot-up, it takes roughly 15 seconds to load as the system services and startups initialize. The stealth script remains active until the user runs "STEALTH_REMOVE.bat" to completely uninstall it.
