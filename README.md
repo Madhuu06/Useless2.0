@@ -79,14 +79,13 @@ For Software:
 ![Silent Execution Demo](Screenshots/s2.png)
 *Demonstration of completely silent wallpaper change with zero popups*
 
-![Stealth Mode Badge](https://img.shields.io/badge/Popup%20Windows-0-green?style=for-the-badge&logo=windows)
-*Visual proof of zero popup execution - maximum stealth achieved*
-
 ### Project Demo
 # Video
-[🎥 **Watch Stealth Wallpaper Changer Demo**](Screenshots/v1.mp4)
+📹 **[Download and Watch Demo Video](Screenshots/v1.mp4)** 
 
-*Click the link above to download and watch the silent stealth wallpaper changer in action*
+[![Download Demo Video](https://img.shields.io/badge/📹_Download_Demo-Click_Here-blue?style=for-the-badge)](Screenshots/v1.mp4)
+
+*Click the button above to download the stealth wallpaper changer demo video*
 
 **Demo Explanation:** 
 Upon running the script, the desktop wallpaper changes instantly to the wallpaper from the script. We demonstrate changing the wallpaper manually before restarting to verify the script's persistence across reboots. After boot-up, it takes roughly 15 seconds to load as the system services and startups initialize. The stealth script remains active until the user runs "STEALTH_REMOVE.bat" to completely uninstall it.
