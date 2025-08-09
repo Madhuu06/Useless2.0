@@ -81,19 +81,12 @@ For Software:
 
 ### Project Demo
 # Video
-📹 **[Download and Watch Demo Video](Screenshots/v1.mp4)** 
 
-[![Download Demo Video](https://img.shields.io/badge/📹_Download_Demo-Click_Here-blue?style=for-the-badge)](Screenshots/v1.mp4)
 
-*Click the button above to download the stealth wallpaper changer demo video*
+[![Download Demo Video](https://github.com/user-attachments/assets/1d043dbe-d903-47d5-b045-f13232184172)
 
 **Demo Explanation:** 
 Upon running the script, the desktop wallpaper changes instantly to the wallpaper from the script. We demonstrate changing the wallpaper manually before restarting to verify the script's persistence across reboots. After boot-up, it takes roughly 15 seconds to load as the system services and startups initialize. The stealth script remains active until the user runs "STEALTH_REMOVE.bat" to completely uninstall it.
-
-# Additional Demos
-- **Zero Popup Demonstration**: Complete silence during execution
-- **Registry Persistence**: Wallpaper survives system reboots  
-- **Stealth Installation**: Hidden startup files with disguised names
 
 Made with ❤️ at TinkerHub Useless Projects 
 
