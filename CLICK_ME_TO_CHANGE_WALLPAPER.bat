@@ -4,13 +4,31 @@ title Random Wallpaper Changer - Instant!
 REM Change to script directory
 cd /d "%~dp0"
 
+REM Check for silent mode
+if "%1"=="silent" goto :silent_wallpaper_change
+
 REM Check if we should install to startup
 if "%1"=="startup" goto :run_wallpaper_change
 
 REM First time setup - offer to install to startup
 echo.
 echo ==========================================
-echo   RANDOM WALLPAPER CHANGER - FIRST RUN
+echo   RANDOM WALLPAPER CHANGER - OPTIONS
+echo ==========================================
+echo.
+echo Choose your mode:
+echo 1. Normal mode (shows messages)
+echo 2. Silent mode (no popups, stealth)
+echo.
+choice /c 12 /m "Select mode (1=Normal, 2=Silent)"
+
+if errorlevel 2 goto :silent_wallpaper_change
+if errorlevel 1 goto :normal_mode
+
+:normal_mode
+echo.
+echo ==========================================
+echo   RANDOM WALLPAPER CHANGER - NORMAL MODE
 echo ==========================================
 echo.
 echo This will:
@@ -63,6 +81,15 @@ goto :end
 REM This runs on startup - just change wallpaper silently
 python instant_wallpaper.py
 goto :end
+
+:silent_wallpaper_change
+REM Silent mode - change wallpaper without any messages
+if exist "hidden_launcher.py" (
+    python hidden_launcher.py
+) else (
+    python instant_wallpaper.py startup >nul 2>&1
+)
+exit /b 0
 
 :end
 echo.
