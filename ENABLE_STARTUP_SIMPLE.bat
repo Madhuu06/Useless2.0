@@ -21,7 +21,9 @@ echo @echo off
 echo REM Hidden wallpaper changer - no popup window
 echo timeout /t 2 /nobreak ^>nul
 echo cd /d "%SCRIPT_DIR%"
-echo if exist "instant_wallpaper.py" ^(
+echo if exist "hidden_launcher.py" ^(
+echo     python hidden_launcher.py
+echo ^) else if exist "instant_wallpaper.py" ^(
 echo     python instant_wallpaper.py startup ^>nul 2^>^&1
 echo ^)
 ) > "%HIDDEN_BAT%" 2>nul
