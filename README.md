@@ -73,10 +73,10 @@ double-click STEALTH_REMOVE.bat
 For Software:
 
 # Screenshots (Add at least 3)
-![Stealth File Structure](screenshots/Screenshot%202025-08-09%20154049.png)
+![Stealth File Structure](./screenshots/Screenshot%202025-08-09%20154049.png)
 *Project file structure showing all stealth components and execution files*
 
-![Silent Execution Demo](screenshots/Screenshot%202025-08-09%20160326.png)
+![Silent Execution Demo](./screenshots/Screenshot%202025-08-09%20160326.png)
 *Demonstration of completely silent wallpaper change with zero popups*
 
 ### Project Demo
