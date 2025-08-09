@@ -17,7 +17,7 @@ REM Write the startup batch file with better error handling
 echo @echo off
 echo REM Auto-generated startup file for Wallpaper Changer
 echo REM Wait a few seconds for Windows to fully load
-echo timeout /t 10 /nobreak ^>nul
+echo timeout /t 5 /nobreak ^>nul
 echo.
 echo REM Change to the wallpaper script directory
 echo cd /d "%SCRIPT_DIR%"
