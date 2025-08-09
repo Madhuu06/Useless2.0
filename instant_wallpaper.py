@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-INSTANT Random Wallpaper Changer - No setup required!
-Just add images to wallpapers folder and run this script!
+INSTANT Wallpaper Changer - No setup required!
+Just add your wallpaper image to wallpapers folder and run this script!
 """
 
 import os
-import random
 import sys
 import ctypes
 import winreg
@@ -115,7 +114,7 @@ def main():
     
     if not startup_mode:
         print("=" * 50)
-        print("  🎨 INSTANT RANDOM WALLPAPER CHANGER")
+        print("  🎨 INSTANT WALLPAPER CHANGER")
         print("=" * 50)
         print()
     
@@ -133,7 +132,7 @@ def main():
         print("⚠️  No wallpaper images found!")
         print()
         print("QUICK SETUP:")
-        print("1. Add some images to the 'wallpapers' folder")
+        print("1. Add your wallpaper image to the 'wallpapers' folder")
         print("2. Run this script again")
         print()
         print("Supported formats: .jpg, .jpeg, .png, .bmp, .gif")
@@ -152,11 +151,11 @@ def main():
         input("\nPress Enter to close...")
         return
     
-    # Choose random wallpaper
-    chosen_wallpaper = random.choice(wallpaper_files)
+    # Use the first wallpaper found (no randomization needed for single wallpaper)
+    chosen_wallpaper = wallpaper_files[0]
     
     if not startup_mode:
-        print(f"🎲 Randomly selected: {chosen_wallpaper.name}")
+        print(f"📷 Using wallpaper: {chosen_wallpaper.name}")
     
     # Set the wallpaper
     success = set_wallpaper(chosen_wallpaper)
@@ -165,7 +164,6 @@ def main():
         if success:
             print()
             print("🎉 Wallpaper changed successfully!")
-            print(f"📁 From collection of {len(wallpaper_files)} images")
             print()
             print("💡 Want automatic changes on startup?")
             print("   Run: python setup.py enable")
