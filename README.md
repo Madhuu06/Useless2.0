@@ -73,16 +73,18 @@ double-click STEALTH_REMOVE.bat
 For Software:
 
 # Screenshots (Add at least 3)
-![Stealth File Structure](screenshots/Screenshot%202025-08-09%20154049.png)
+![Stealth File Structure](Screenshots/Screenshot%202025-08-09%20154049.png)
 *Project file structure showing all stealth components and execution files*
 
-![Silent Execution Demo](screenshots/Screenshot%202025-08-09%20160326.png)
+![Silent Execution Demo](Screenshots/Screenshot%202025-08-09%20160326.png)
 *Demonstration of completely silent wallpaper change with zero popups*
 
-### Project Demo
+![Stealth Mode Badge](https://img.shields.io/badge/Popup%20Windows-0-green?style=for-the-badge&logo=windows)
+*Visual proof of zero popup execution - maximum stealth achieved*
+
 ### Project Demo
 # Video
-[🎥 **Watch Stealth Wallpaper Changer Demo**](screenshots/WhatsApp%20Video%202025-08-09%20at%2016.22.19_0fe5db9e.mp4)
+[🎥 **Watch Stealth Wallpaper Changer Demo**](Screenshots/WhatsApp%20Video%202025-08-09%20at%2016.22.19_0fe5db9e.mp4)
 
 *Click the link above to download and watch the silent stealth wallpaper changer in action*
 
